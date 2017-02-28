@@ -1,6 +1,9 @@
 FROM debian
 MAINTAINER PrivateHeberg
 
+ENV SERVER_DIR $dir
+ENV PORT $port
+
 RUN mkdir -p $dir
 WORKDIR $dir
 RUN wget http://media.steampowered.com/client/steamcmd_linux.tar.gz
