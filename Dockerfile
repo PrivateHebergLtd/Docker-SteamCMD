@@ -1,18 +1,24 @@
 FROM debian
-MAINTAINER PrivateHeberg
+MAINTAINER privateHeberg
 
-ENV SERVER_DIR $dir
-ENV PORT $port
+RUN apt-get update
+RUN apt-get -y install lib32gcc1 libc6-i386 wget
 
-RUN mkdir -p $dir
-WORKDIR $dir
-RUN wget http://media.steampowered.com/client/steamcmd_linux.tar.gz
-RUN tar -xvzf steamcmd_linux.tar.gz
+ENV DATA_DIR="/serverdata"
+ENV STEAMCMD_DIR="${DATA_DIR}"
+ENV SERVER_DIR="${DATA_DIR}"
+ENV GAME_ID="740"
+ENV GAME_NAME="csgo"
+ENV GAME_PARAMS="+game_type 0 +game_mode 0 +mapgroup mg_active +map de_dust2"
+ENV GAME_PORT=27015
 
-EXPOSE $port
+RUN mkdir $DATA_DIR
+RUN mkdir $STEAMCMD_DIR
+RUN mkdir $SERVER_DIR
 
-WORKDIR $dir
-ADD start.sh $dir/start.sh
-RUN chmod 755 $dir/start.sh
+RUN ulimit -n 2048
 
-CMD ["$dir/start.sh"]
+ADD /scripts/ /opt/scripts/
+RUN chmod -R 774 /opt/scripts/
+
+ENTRYPOINT ["/opt/scripts/start.sh"]
