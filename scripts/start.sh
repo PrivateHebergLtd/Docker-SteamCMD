@@ -2,7 +2,7 @@
 if [ ! -f /home/Modules/Steam/steam/steamcmd/steamcmd.sh ]; then
     echo "Steamcmd n'existe pas sur cette machine !"
     wget -q -O /home/Modules/Steam/steam/steamcmd/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz
-    tar --directory /home/Modules/Steam/steam/steamcmd -xvzf /serverdata/steamcmd/steamcmd_linux.tar.gz
+    tar --directory /home/Modules/Steam/steam/steamcmd -xvzf /home/Modules/Steam/steam/steamcmd/steamcmd_linux.tar.gz
     rm /home/Modules/Steam/steam/steamcmd/steamcmd_linux.tar.gz
     chmod -R 774 /home/Modules/Steam/steam/steamcmd $SERVER_DIR
 fi
