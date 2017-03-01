@@ -4,8 +4,8 @@ MAINTAINER privateHeberg
 RUN apt-get update
 RUN apt-get -y install lib32gcc1 libc6-i386 wget
 
-ENV DATA_DIR="/steamdata"
-ENV STEAMCMD_DIR="${DATA_DIR}/steamcmd"
+ENV DATA_DIR="/home/SERVERS/SERVERBETAcsgo"
+ENV STEAMCMD_DIR="/home/Modules/Steam/steam/steamcmd"
 ENV SERVER_DIR="${DATA_DIR}/serverfiles"
 ENV GAME_ID="740"
 ENV GAME_NAME="csgo"
@@ -18,7 +18,10 @@ RUN mkdir $SERVER_DIR
 
 RUN ulimit -n 2048
 
-ADD /scripts/ /opt/scripts/
-RUN chmod -R 774 /opt/scripts/
+ADD /scripts/ /home/Modules/Steam/steam/
+RUN chmod -R 774 /home/Modules/Steam/steam/
 
-ENTRYPOINT ["/opt/scripts/start.sh"]
+VOLUME  ${DATA_DIR}
+WORKDIR ${DATA_DIR}
+
+ENTRYPOINT ["/home/Modules/Steam/steam/start.sh"]
