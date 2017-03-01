@@ -11,9 +11,6 @@ ENV GAME_ID="740"
 ENV GAME_NAME="csgo"
 ENV GAME_PARAMS="+game_type 0 +game_mode 0 +mapgroup mg_active +map de_dust2"
 ENV GAME_PORT=27015
-ENV TZ=Europe/Paris
-
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN mkdir /home/SERVERS
 RUN mkdir /home/Modules && mkdir /home/Modules/Steam && mkdir /home/Modules/Steam/steam
@@ -26,7 +23,7 @@ RUN ulimit -n 2048
 ADD /scripts/ /home/Modules/Steam/steam/
 RUN chmod -R 774 /home/Modules/Steam/steam/
 
-VOLUME  ${DATA_DIR}
-WORKDIR ${DATA_DIR}
+VOLUME  $SERVER_DIR
+WORKDIR $SERVER_DIR
 
 ENTRYPOINT ["/home/Modules/Steam/steam/start.sh"]
