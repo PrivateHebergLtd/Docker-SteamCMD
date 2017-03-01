@@ -13,8 +13,9 @@ ENV GAME_PARAMS="+game_type 0 +game_mode 0 +mapgroup mg_active +map de_dust2"
 ENV GAME_PORT=27015
 
 RUN mkdir /home/SERVERS
-RUN mkdir $DATA_DIR
+RUN mkdir /home/Modules && mkdir /home/Modules/Steam && mkdir /home/Modules/Steam/steam
 RUN mkdir $STEAMCMD_DIR
+RUN mkdir $DATA_DIR
 RUN mkdir $SERVER_DIR
 
 RUN ulimit -n 2048
