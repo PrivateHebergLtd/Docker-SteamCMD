@@ -41,4 +41,4 @@ VOLUME /data
 WORKDIR /data
 # ================= #
 
-ENTRYPOINT ["chmod", "+x", "/start.sh"]
+CMD /start.sh
