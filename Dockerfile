@@ -1,33 +1,45 @@
+# ==================
+#  Steam Dockerfile
+#   PrivateHeberg©
+# ==================
+
 FROM debian:8
 MAINTAINER privateHeberg
 
-# Variables #
-ENV DATA_DIR="/home/SERVERS/SERVER00BETA"
-ENV STEAMCMD_DIR="/home/Modules/Steam/steam/steamcmd"
-ENV SERVER_DIR="${DATA_DIR}/serverfiles"
-ENV GAME_ID="740"
-ENV GAME_NAME="csgo"
-ENV GAME_PARAMS="+game_type 0 +game_mode 0 +mapgroup mg_active +map de_dust2"
+# ==== Variables ==== #
+ENV STEAM_USER anonymous
+ENV STEAM_PASS ""
+ENV INSTALL_DIR ""
+ENV STEAMCMD_DIR "/home/Modules/Steam/steam/steamcmd"
+ENV GAME_ID=""
+ENV GAME_NAME=""
+ENV GAME_PARAMS=""
 ENV GAME_PORT=27015
+# =================== #
 
-# Mise à jour et installation des dépendences #
+# ==== Paquets ==== #
 RUN apt-get update
 RUN apt-get -y install lib32gcc1 libc6-i386 wget curl
+# ================= #
 
-# Ajout de l'user Steam #
+# ==== Steam user ==== #
 RUN adduser \
 	--disabled-login \
 	--shell /bin/bash \
 	--gecos "" \
 	steam
 RUN usermod -a -G sudo steam
+# ==================== #
 
-# Copie des scripts
-RUN mkdir -p /game
-RUN mkdir -p /home && mkdir -p /home/SERVERS && mkdir -p $DATA_DIR && mkdir -p /home/Modules && mkdir -p /home/Modules/Steam && mkdir -p /home/Modules/Steam/steam && mkdir -p $STEAMCMD_DIR
+# ==== Scripts ==== #
+RUN mkdir -p /data && mkdir -p /data/steamcmd
+RUN chmod -R 777 /data
+ADD start.sh /
+# ================= #
 
-# Dossier de script
-RUN chmod -R 777 /home/Modules/Steam/steam/
-ADD start.sh /game
+# ==== Volumes ==== #
+VOLUME /data
+WORKDIR /data
+# ================= #
 
-ENTRYPOINT ["/game/start.sh"]
+ENTRYPOINT ["/data/start.sh"]
