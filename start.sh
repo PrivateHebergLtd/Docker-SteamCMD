@@ -4,7 +4,7 @@ if [ ! -f /data/steamcmd/steamcmd.sh ]; then
     wget -q -O /data/steamcmd/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz
     tar --directory /data/steamcmd/steamcmd -xvzf /data/steamcmd/steamcmd_linux.tar.gz
     rm /data/steamcmd/steamcmd_linux.tar.gz
-    chmod -R 774 /data/steamcmd ${SERVER_DIR}
+    chmod -R 777 /data
 fi
 
 echo "--- Mise à jour de SteamCMD ---"

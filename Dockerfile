@@ -9,8 +9,6 @@ MAINTAINER privateHeberg
 # ==== Variables ==== #
 ENV STEAM_USER anonymous
 ENV STEAM_PASS ""
-ENV INSTALL_DIR ""
-ENV STEAMCMD_DIR "/home/Modules/Steam/steam/steamcmd"
 ENV GAME_ID=""
 ENV GAME_NAME=""
 ENV GAME_PARAMS=""
