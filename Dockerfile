@@ -29,8 +29,4 @@ RUN mkdir -p /home && mkdir -p /home/SERVERS && mkdir -p $DATA_DIR && mkdir -p /
 RUN chmod -R 777 /home/Modules/Steam/steam/
 ADD start.sh /game
 
-# Passage sous le volume du jeu
-VOLUME  /game
-WORKDIR /game
-
 ENTRYPOINT ["/game/start.sh"]
