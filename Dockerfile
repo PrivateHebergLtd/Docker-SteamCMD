@@ -12,7 +12,7 @@ ENV GAME_PORT=27015
 
 # Mise à jour et installation des dépendences #
 RUN apt-get update
-RUN apt-get -y install lib32gcc1 libc6-i386 wget
+RUN apt-get -y install lib32gcc1 libc6-i386 wget curl
 
 # Ajout de l'user Steam #
 RUN adduser \
