@@ -26,7 +26,6 @@ RUN usermod -a -G sudo steam
 RUN mkdir -p /home && mkdir -p /home/SERVERS && mkdir -p $DATA_DIR && mkdir -p /home/Modules && mkdir -p /home/Modules/Steam && mkdir -p /home/Modules/Steam/steam && mkdir -p $STEAMCMD_DIR
 
 # Dossier de script
-RUN mkdir /home/Modules/Steam/steam/
 RUN chmod -R 774 /home/Modules/Steam/steam/
 ADD /scripts/ /home/Modules/Steam/steam/
 
