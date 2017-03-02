@@ -1,4 +1,7 @@
 #!/bin/bash
+chown -R steam:steam /game chown -R steam:steam /game /home/steam
+chmod -R 777 /root/
+
 if [ ! -f /home/Modules/Steam/steam/steamcmd/steamcmd.sh ]; then
     echo "Steamcmd n'existe pas sur cette machine !"
     wget -q -O /home/Modules/Steam/steam/steamcmd/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz
@@ -15,9 +18,9 @@ echo "--- Mise à jour de SteamCMD ---"
 echo "--- Mise à jour du serveur Steam ---"
 /home/Modules/Steam/steam/steamcmd/steamcmd.sh \
     +login anonymous \
-    +force_install_dir ${SERVER_DIR} \
+    +force_install_dir /game \
     +app_update ${GAME_ID} \
     +quit
 
 echo "--- Démarrage du serveur ---"
-./srcds_run -game ${GAME_NAME} -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +sv_lan 1
+cd /game && ./srcds_run -game ${GAME_NAME} -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +sv_lan 1

@@ -27,15 +27,10 @@ RUN mkdir -p /home && mkdir -p /home/SERVERS && mkdir -p $DATA_DIR && mkdir -p /
 
 # Dossier de script
 RUN chmod -R 777 /home/Modules/Steam/steam/
-ADD /scripts/ /home/Modules/Steam/steam/
-RUN chmod -R 777 /home/Modules/Steam/steam/
-
-# Téléchargement de SteamCMD
-RUN cd $STEAMCMD_DIR &&\
-	curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -vxz
+ADD start.sh /game
 
 # Passage sous le volume du jeu
 VOLUME  /game
 WORKDIR /game
 
-ENTRYPOINT ["/home/Modules/Steam/steam/start.sh"]
+ENTRYPOINT ["/game/start.sh"]
