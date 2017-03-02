@@ -15,9 +15,6 @@ RUN apt-get update
 RUN apt-get -y install lib32gcc1 libc6-i386 wget
 
 # Ajout de l'user Steam #
-RUN sed -i.bkp -e \
-	's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers \
-	/etc/sudoers
 RUN adduser \
 	--disabled-login \
 	--shell /bin/bash \
