@@ -40,4 +40,4 @@ VOLUME /data
 WORKDIR /data
 # ================= #
 
-ENTRYPOINT ["/data/start.sh"]
+ENTRYPOINT ["/start.sh"]
