@@ -29,7 +29,7 @@ echo "--- Mise à jour de SteamCMD ---"
 
 echo "--- Mise à jour du serveur Steam ---"
 /home/steam/steamcmd/steamcmd.sh \
-    +login anonymous \
+    +login ${STEAM_USER} ${STEAM_PASSWORD} \
     +force_install_dir /data/game \
     +app_update ${GAME_ID} \
     +quit
