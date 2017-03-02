@@ -23,8 +23,7 @@ RUN adduser \
 RUN usermod -a -G sudo steam
 
 # Copie des scripts
-RUN mkdir /home
-COPY steam.sh /home/steam/run.sh
+RUN mkdir -p /home && mkdir -p /home/SERVERS && mkdir -p $DATA_DIR && mkdir -p /home/Modules && mkdir -p /home/Modules/Steam && mkdir -p /home/Modules/Steam/steam && mkdir -p $STEAMCMD_DIR
 
 # Dossier de script
 RUN mkdir /home/Modules/Steam/steam/
