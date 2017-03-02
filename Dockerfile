@@ -41,4 +41,4 @@ VOLUME /data
 WORKDIR /data
 # ================= #
 
-CMD /start.sh
+CMD start.sh
