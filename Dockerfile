@@ -33,6 +33,7 @@ RUN usermod -a -G sudo steam
 RUN mkdir -p /data && mkdir -p /data/steamcmd
 RUN chmod -R 777 /data
 ADD start.sh /
+RUN chmod -R 777 start.sh
 # ================= #
 
 # ==== Volumes ==== #
@@ -40,4 +41,4 @@ VOLUME /data
 WORKDIR /data
 # ================= #
 
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["chmod", "+x", "/start.sh"]
