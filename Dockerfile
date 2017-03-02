@@ -23,7 +23,4 @@ RUN ulimit -n 2048
 ADD /scripts/ /home/Modules/Steam/steam/
 RUN chmod -R 774 /home/Modules/Steam/steam/
 
-VOLUME  $SERVER_DIR
-WORKDIR $SERVER_DIR
-
 ENTRYPOINT ["/home/Modules/Steam/steam/start.sh"]
