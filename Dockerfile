@@ -16,8 +16,8 @@ ENV GAME_PORT=27015
 # =================== #
 
 # ==== Paquets ==== #
-RUN apt-get update
-RUN apt-get -y install lib32gcc1 libc6-i386 wget curl
+RUN apt-get update &&\
+    apt-get install -y curl lib32gcc1 lsof git
 # ================= #
 
 # ==== Steam user ==== #
@@ -30,15 +30,22 @@ RUN usermod -a -G sudo steam
 # ==================== #
 
 # ==== Scripts ==== #
-RUN mkdir -p /data && mkdir -p /data/steamcmd
-RUN chmod -R 777 /data
-ADD start.sh /
-RUN chmod -R 777 start.sh
+COPY run.sh /home/steam/run.sh
+RUN touch /root/.bash_profile
+RUN chmod 777 /home/steam/run.sh
+RUN mkdir  /data
+RUN chown steam -R /data && chmod 755 -R /data
 # ================= #
 
+# ==== SteamCMD ==== #
+RUN mkdir /home/steam/steamcmd &&\
+	cd /home/steam/steamcmd &&\
+	curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -vxz
+# ================== #
+
 # ==== Volumes ==== #
-VOLUME /data
+VOLUME  /data
 WORKDIR /data
 # ================= #
 
-CMD start.sh
+ENTRYPOINT ["/home/steam/run.sh"]
