@@ -7,8 +7,6 @@ FROM debian:8
 MAINTAINER privateHeberg
 
 # ==== Variables ==== #
-ENV STEAM_USER anonymous
-ENV STEAM_PASSWORD ""
 ENV GAME_ID=""
 ENV API_KEY=""
 ENV GAME_NAME=""
