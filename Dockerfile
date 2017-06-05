@@ -41,7 +41,6 @@ RUN chown steam -R /data && chmod 755 -R /data
 RUN mkdir /home/steam/steamcmd &&\
 	cd /home/steam/steamcmd &&\
 	curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -vxz
-EXPOSE 27015
 # ================== #
 
 
