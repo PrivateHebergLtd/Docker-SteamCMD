@@ -43,6 +43,10 @@ RUN mkdir /home/steam/steamcmd &&\
 	curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -vxz
 # ================== #
 
+# ==== Port ==== #
+EXPOSE ${GAME_PORT}/udp
+EXPOSE ${GAME_PORT}
+# ================== #
 
 # ==== Volumes ==== #
 VOLUME  /data
