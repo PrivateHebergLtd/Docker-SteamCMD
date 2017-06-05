@@ -16,7 +16,8 @@ ENV GAME_PORT=27015
 
 # ==== Paquets ==== #
 RUN apt-get update &&\
-    apt-get install -y curl lib32gcc1 lsof git
+    apt-get install -y curl lib32gcc1 lsof git &&\
+    apt-get install lib32stdc++6
 # ================= #
 
 # ==== Steam user ==== #
