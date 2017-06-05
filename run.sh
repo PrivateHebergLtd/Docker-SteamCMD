@@ -22,6 +22,13 @@ if [ ! -d /data/server  ] || [ ! -f /data/server ];then
     # TODO Installation du jeu
 fi
 
+if [ ! -f /data/apikey.txt ]; then
+    echo '' > /data/apikey.txt
+fi
+apikey=$(</data/apikey.txt)
+
+ln -s /home/steam/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
+
 echo "--- Mise à jour de SteamCMD ---"
 /home/steam/steamcmd/steamcmd.sh \
     +login anonymous \
@@ -35,4 +42,4 @@ echo "--- Mise à jour du serveur Steam ---"
     +quit
 
 echo "--- Démarrage du serveur ---"
-cd /data/game && ./srcds_run -game ${GAME_NAME} -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +sv_lan 1 +sv_setsteamaccount ${API_KEY}
+cd /data/game && ./srcds_run -game ${GAME_NAME} -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +sv_lan 1 +sv_setsteamaccount ${apikey}
