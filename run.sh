@@ -42,4 +42,4 @@ echo "--- Mise à jour du serveur Steam ---"
     +quit
 
 echo "--- Démarrage du serveur ---"
-cd /data/game && ./srcds_run -game ${GAME_NAME} -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +sv_lan 1 +sv_setsteamaccount ${apikey}
+cd /data/game && ./srcds_run -game ${GAME_NAME} -debug -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +sv_lan 1 +sv_setsteamaccount ${apikey}
