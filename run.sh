@@ -41,6 +41,11 @@ echo "--- Mise à jour du serveur Steam ---"
     +app_update ${GAME_ID} \
     +quit
 
+
 echo "--- Démarrage du serveur ---"
-echo "Commande: ./srcds_run -game ${GAME_NAME} -debug -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +maxplayers ${MAX_PLAYER} +sv_setsteamaccount ${apikey} -sv_lan 0 -autoupdate"
-cd /data/game && ./srcds_run -game ${GAME_NAME} -debug -usercon -console ${GAME_PARAMS} +port ${GAME_PORT} +maxplayers ${MAX_PLAYER} +sv_setsteamaccount ${apikey} -sv_lan 0 -autoupdate
+if [ ! -f /data/config.txt ]; then
+    echo '' > /data/config.txt
+fi
+params=$(</data/config.txt)
+echo "Commande: ./srcds_run -game ${GAME_NAME} -debug -usercon -console ${params} +port ${GAME_PORT} +maxplayers ${MAX_PLAYER} +sv_setsteamaccount ${apikey} -sv_lan 0 -autoupdate"
+cd /data/game && ./srcds_run -game ${GAME_NAME} -debug -usercon -console ${params} +port ${GAME_PORT} +maxplayers ${MAX_PLAYER} +sv_setsteamaccount ${apikey} -sv_lan 0 -autoupdate
