@@ -44,8 +44,8 @@ RUN mkdir /home/steam/steamcmd &&\
 # ================== #
 
 # ==== Port ==== #
-EXPOSE ${GAME_PORT}/udp
-EXPOSE ${GAME_PORT}
+EXPOSE 7778 32330 ${GAME_PORT}
+EXPOSE 7778/udp ${SERVERPORT}/udp ${GAME_PORT}/udp
 # ================== #
 
 # ==== Volumes ==== #
