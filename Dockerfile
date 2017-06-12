@@ -8,6 +8,7 @@ MAINTAINER privateHeberg
 
 # ==== Variables ==== #
 ENV GAME_ID=""
+ENV MAX_PLAYER=10
 ENV API_KEY=""
 ENV GAME_NAME=""
 ENV GAME_PARAMS=""
@@ -44,8 +45,8 @@ RUN mkdir /home/steam/steamcmd &&\
 # ================== #
 
 # ==== Port ==== #
-EXPOSE 7778 32330 ${GAME_PORT}
-EXPOSE 7778/udp ${SERVERPORT}/udp ${GAME_PORT}/udp
+EXPOSE ${GAME_PORT}
+EXPOSE ${GAME_PORT}/udp
 # ================== #
 
 # ==== Volumes ==== #
